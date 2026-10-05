@@ -309,3 +309,16 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 
   EXPECT_NE(bf1, bf2);
 }
+// Новый тест для задания
+TEST(TBitField, OR_with_itself_does_not_change_bitfield)
+{
+    const int size = 150;
+    TBitField bf(size);
+    bf.SetBit(13);
+    bf.SetBit(88);
+    bf.SetBit(145);
+
+    TBitField result = bf | bf;
+
+    EXPECT_EQ(bf, result);
+}

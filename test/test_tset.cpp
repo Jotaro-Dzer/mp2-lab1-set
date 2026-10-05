@@ -295,3 +295,29 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+//Новые тесты для задания
+TEST(TSet, can_delete_element_using_minus_operator)
+{
+	const int size = 10;
+	TSet set(size);
+	set.InsElem(5);
+
+	TSet result = set - 5;
+
+	EXPECT_EQ(0, result.IsMember(5));
+}
+
+TEST(TSet, intersect_nested_sets)
+{
+	const int size = 20;
+	TSet set1(size), set2(size);
+
+	set1.InsElem(2); set1.InsElem(4); set1.InsElem(6);
+	set2.InsElem(4);
+
+	TSet result = set1 * set2;
+
+	EXPECT_EQ(0, result.IsMember(2));
+	EXPECT_EQ(1, result.IsMember(4));
+	EXPECT_EQ(0, result.IsMember(6));
+}
